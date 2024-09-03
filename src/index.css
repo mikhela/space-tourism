@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body
+{
+    overflow: hidden;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.button-shadow
+{
+    transition: 1s;
+}
+
+.button-shadow:hover
+{
+    box-shadow: -1px 1px 37px 25px rgba(255,255,255,0.75);
+    -webkit-box-shadow: -1px 1px 37px 25px rgba(255,255,255,0.75);
+    -moz-box-shadow: -1px 1px 37px 25px rgba(255,255,255,0.75);
+}
+
+.left-content-navbarnav
+{
+    background-color: rgba(210, 216, 249, 0.05);
+    backdrop-filter: blur(24px);
+}
+.destinationpagefullcontainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scrollbar-width: none;
+  }
+@keyframes navbaropac {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+@keyframes slidefromright {
+    from {
+      opacity: 0;
+      right: -60%;
+    }
+    to {
+      right: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes slidefromleft {
+    from {
+      opacity: 0;
+      left: -50;
+    }
+    to {
+      opacity: 1;
+      left: 0;
+    }
+  }
+
+.navbardestination
+{
+    opacity: 0;
+    transition: right 2s ease-in-out;
+    animation: navbaropac 2s ease-in-out forwards; /* Apply animation */
+}
+  .informationplanets {
+    opacity: 0;
+    position: fixed;
+    transition: right 3s ease-in-out;
+    animation: slidefromright 3s ease-in-out forwards; /* Apply animation */
+    animation-delay: 3s; 
+
+  }
+  
+  .planet {
+    opacity: 0;
+    transition: right 3s ease-in-out;
+    animation: slidefromleft 3s ease-in-out forwards; /* Apply animation */
+    animation-delay: 1s;
+  }
+  
+  @media only screen and (max-width: 1024px)
+  {
+    .planet
+    {
+        position: relative;
+        margin: auto;
+    }
+    .informationplanets {
+        margin: auto;
+        top: 50px;
+        position: relative;
+        width: 500px;
+        max-width: 100%;
+        padding-bottom: 30px;
+      }
+  }
+
