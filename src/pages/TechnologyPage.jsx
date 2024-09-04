@@ -3,6 +3,7 @@ import desktopbg from '../images/technology/background-technology-desktop.jpg'
 import mobilebg from '../images/technology/background-technology-mobile.jpg';
 import tabletbg from '../images/technology/background-technology-tablet.jpg';
 import { useEffect, useState } from 'react';
+import TechnologyCard from '../components/TechnologyCard';
 
 export default function TechnologyPage()
 {
@@ -29,9 +30,10 @@ export default function TechnologyPage()
     className="bg-cover bg-center h-screen w-full"
     style={{ backgroundImage: `url(${bgImage})` }}
   >
-    <div className="w-[80%] h-[70vh]  relative "
-          style={{left: "50%", top: '50%', transform: "translate(-50%, -50%)", zIndex: '1'}}
+    <div className="noscrlbar w-[100%] h-[100vh] md:h-[75vh]  relative overflow-y-auto overflow-x-hidden "
+          style={{left: "50%", top: '60%', transform: "translate(-50%, -50%)", zIndex: '1'}}
     > 
+    <TechnologyCard />
     </div>
   </div>
   )

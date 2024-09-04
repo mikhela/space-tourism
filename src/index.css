@@ -30,7 +30,7 @@ body
     background-color: rgba(210, 216, 249, 0.05);
     backdrop-filter: blur(24px);
 }
-.destinationpagefullcontainer::-webkit-scrollbar {
+.noscrlbar::-webkit-scrollbar {
     display: none;
   }
 
@@ -66,18 +66,45 @@ body
       left: 0;
     }
   }
-
+  .animationtech-left
+  {
+    opacity: 0;
+    transition: right 3s ease-in-out;
+    animation: navbaropac 3s ease-in-out forwards; 
+  }
+  .animationtech 
+  {
+    opacity: 0;
+    transition: right 4s ease-in-out;
+    animation: navbaropac 4s ease-in-out forwards; 
+    animation-delay: 2s;
+  }
+  .content-left-crew
+  {
+    opacity: 0;
+    transition: right 3s ease-in-out;
+    animation: navbaropac 3s ease-in-out forwards; 
+  }
+.content-right-crew-img
+{
+  opacity: 0;
+  right: -50%;
+  position: fixed;
+  transition: right 3s ease-in-out;
+  animation: slidefromright 3s ease-in-out forwards; 
+  animation-delay: 1s;
+}
 .navbardestination
 {
     opacity: 0;
     transition: right 2s ease-in-out;
-    animation: navbaropac 2s ease-in-out forwards; /* Apply animation */
+    animation: navbaropac 2s ease-in-out forwards; 
 }
   .informationplanets {
     opacity: 0;
     position: fixed;
     transition: right 3s ease-in-out;
-    animation: slidefromright 3s ease-in-out forwards; /* Apply animation */
+    animation: slidefromright 3s ease-in-out forwards; 
     animation-delay: 3s; 
 
   }

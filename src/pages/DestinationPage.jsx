@@ -5,7 +5,7 @@ export default function DestinationPage()
 {
   return (
     <div 
-    className="destinationpagefullcontainer bg-center bg-no-repeat bg-cover h-screen w-full absolute top-0 overflow-y-auto overflow-x-hidden"
+    className="noscrlbar bg-center bg-no-repeat bg-cover h-screen w-full absolute top-0 overflow-y-auto overflow-x-hidden"
     style={{ backgroundImage: `url(${desktopbg})` }}
     >
     <div className="w-[80%] h-[70vh]  relative top-[45%] md:top-[60%]"
