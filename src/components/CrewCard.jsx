@@ -54,14 +54,14 @@ const CrewCard = React.memo(() => {
                 <h3 className="text-bar font-normal tracking-wide text-gray-500 text-3xl w-[350px] lg:w-[450px] max-w-full mt-6 mx-auto md:mx-0">
                     {crewMembers[activeCrew].role.toUpperCase()}
                 </h3>
-                <h1 className="font-bellefair md:text-5xl mt-3 text-3xl w-[350px] lg:w-[450px] max-w-full mt-6 mx-auto md:mx-0">
+                <h1 className="font-bellefair md:text-5xl  text-3xl w-[350px] lg:w-[450px] max-w-full mt-6 mx-auto md:mx-0">
                     {crewMembers[activeCrew].name.toUpperCase()}
                 </h1>
                 <h3 className="text-bar font-normal tracking-wide text-gray-300 text-sm md:text-lg w-[350px] lg:w-[450px] max-w-full mt-6 mx-auto md:mx-0">
                     {crewMembers[activeCrew].description}
                 </h3>
                 
-                <div className="indicators flex gap-3 mt-32 w-[350px] lg:w-[450px] max-w-full mt-6 mx-auto md:mx-0">
+                <div className="indicators flex gap-3  w-[350px] lg:w-[450px] max-w-full mt-6 mx-auto md:mx-0">
                     {Object.keys(crewMembers).map((key) => (
                         <div 
                             key={key}
