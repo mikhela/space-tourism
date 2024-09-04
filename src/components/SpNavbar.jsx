@@ -6,16 +6,24 @@ import { Link, useLocation } from 'react-router-dom';
 export default function SpNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
-  const location = useLocation();
+  const location = useLocation(); 
 
   const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
-    const path = location.pathname.substring(1); // Remove leading '/'
-    setActiveLink(path || 'home'); // Default to 'home' if path is empty
-  }, [location]);
+    const currentPath = location.pathname;
+    if (currentPath === '/') {
+      setActiveLink('home');
+    } else if (currentPath.includes('Destination')) {
+      setActiveLink('destination');
+    } else if (currentPath.includes('Crew')) {
+      setActiveLink('crew');
+    } else if (currentPath.includes('Technology')) {
+      setActiveLink('technology');
+    }
+  }, [location]); 
 
   return (
     <div className="w-full fixed" style={{ zIndex: '999' }}>
@@ -26,12 +34,12 @@ export default function SpNavbar() {
           <FontAwesomeIcon icon={faStar} />
         </span>
 
-        <div className="border border-mainColor w-[80%] fixed left-[140px] top-16 hidden md:block"></div>
+        <div className="border border-mainColor w-[80%] fixed left-[140px] top-16 hidden sm:hidden md:block lg:block xl:block 2xl:block"></div>
 
         <div
-          className={`left-content-navbarnav z-50 md:flex p-5 text-lg font-semibold lg:px-20 xl:px-32 py-10 ${
+          className={`left-content-navbarnav z-50 md:flex p-5  text-lg font-semibold lg:px-20 xl:px-32 py-10 ${
             isMenuOpen ? 'fixed w-[75%] h-[100vh] right-0 top-0' : 'hidden'
-          }`}
+          } md:block`}
         >
           <FontAwesomeIcon onClick={toggleMenu} icon={faTimes} className={`fixed right-7 top-5 text-3xl ${!isMenuOpen ? 'hidden' : ''}`} />
           <div className={`innerleft gap-12 ${isMenuOpen ? 'fixed left-10' : 'flex'}`}>
@@ -45,7 +53,7 @@ export default function SpNavbar() {
             </Link>
             <Link
               to="/Destination"
-              className={`block ${activeLink === 'destination' ? 'border-b-2 border-white' : ''} py-2`}
+              className={`destinationlink block ${activeLink === 'destination' ? 'border-b-2 border-white' : ''} py-2`}
               onClick={() => setActiveLink('destination')}
             >
               <span className="block font-extrabold">01</span>
