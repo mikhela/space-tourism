@@ -5,7 +5,11 @@
 body
 {
     overflow: hidden;
-    background: radial-gradient(circle at center, #000428, #004e92 30%, #a4269e 60%, #fc466b);
+    background: linear-gradient(
+    135deg, 
+    #0f0c29,
+    #302b63, 
+  );
 }
 
 *{
