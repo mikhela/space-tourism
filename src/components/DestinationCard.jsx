@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import marsimg from '../images/destination/image-mars.png';
 import europaimg from '../images/destination/image-europa.webp';
 import moonimg from '../images/destination/image-moon.png';
 import titanimg from '../images/destination/image-titan.png';
 
-export default function DestinationCard() {
+// Preload images
+const preloadImages = [marsimg, europaimg, moonimg, titanimg];
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
+const DestinationCard = () => {
   const [activeDestination, setActiveDestination] = useState('mars');
 
-  const destinations = {
+  const destinations = useMemo(() => ({
     mars: {
       id: 'mars',
       name: 'Mars',
@@ -40,19 +47,16 @@ export default function DestinationCard() {
       distance: '384,400 km',
       travelTime: '3 days',
     },
-  };
+  }), []);
 
-
-  const handleNavClick = (destination) => {
+  const handleNavClick = useCallback((destination) => {
     setActiveDestination(destination);
-  };
+  }, []);
 
   return (
     <div>
-  
-      
       {/* Navbar */}
-      <nav className="navbardestination mt-12 flex justify-around border-b-2 border-gray-600  w-full">
+      <nav className="navbardestination mt-12 flex justify-around border-b-2 border-gray-600 w-full">
         {Object.keys(destinations).map((key) => (
           <button
             key={key}
@@ -66,24 +70,37 @@ export default function DestinationCard() {
       
       {/* Destination Content */}
       <div className="mt-12">
-        <img className='planet fixed -left-1/2' src={destinations[activeDestination].image} alt={destinations[activeDestination].name} />
+        <img 
+          className='planet fixed -left-1/2' 
+          src={destinations[activeDestination].image} 
+          alt={destinations[activeDestination].name} 
+        />
         
-        <div className="informationplanets  text-white w-1/3">
-        <h1 className="font-bellefair md:text-8xl mt-3 text-6xl">{destinations[activeDestination].name}</h1>
-        <p className="mt-2 text-gray-200 border-b-2 pb-8 border-mainColor">{destinations[activeDestination].description}</p>
-        <div className="flex justify-between mt-4 text-xl">
-        <p>
-            <span className='text-gray-400 block '>AVG, DISTANCE</span>
-            <span className='text-white font-bellefair text-xl'>{destinations[activeDestination].distance}</span>
+        <div className="informationplanets text-white w-1/3">
+          <h1 className="font-bellefair md:text-8xl mt-3 text-6xl">
+            {destinations[activeDestination].name}
+          </h1>
+          <p className="mt-2 text-gray-200 border-b-2 pb-8 border-mainColor">
+            {destinations[activeDestination].description}
+          </p>
+          <div className="flex justify-between mt-4 text-xl">
+            <p>
+              <span className='text-gray-400 block'>AVG. DISTANCE</span>
+              <span className='text-white font-bellefair text-xl'>
+                {destinations[activeDestination].distance}
+              </span>
             </p>
-        <p>
-        <span className='text-gray-400  block'>EST, TRAVEL TIME</span>
-        <span className='text-white font-bellefair text-xl'>{destinations[activeDestination].travelTime}</span>
-        </p>
-        </div>
-
+            <p>
+              <span className='text-gray-400 block'>EST. TRAVEL TIME</span>
+              <span className='text-white font-bellefair text-xl'>
+                {destinations[activeDestination].travelTime}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default DestinationCard;
