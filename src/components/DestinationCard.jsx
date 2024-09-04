@@ -4,7 +4,6 @@ import europaimg from '../images/destination/image-europa.webp';
 import moonimg from '../images/destination/image-moon.png';
 import titanimg from '../images/destination/image-titan.png';
 
-// Preload images
 const preloadImages = [marsimg, europaimg, moonimg, titanimg];
 preloadImages.forEach(src => {
   const img = new Image();

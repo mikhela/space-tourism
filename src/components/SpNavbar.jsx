@@ -6,14 +6,13 @@ import { Link, useLocation } from 'react-router-dom';
 export default function SpNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
-  const location = useLocation(); // Get the current location
+  const location = useLocation(); 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
-    // Update activeLink based on the current location
     const currentPath = location.pathname;
     if (currentPath === '/') {
       setActiveLink('home');
@@ -24,7 +23,7 @@ export default function SpNavbar() {
     } else if (currentPath.includes('Technology')) {
       setActiveLink('technology');
     }
-  }, [location]); // Re-run this effect whenever the location changes
+  }, [location]); 
 
   return (
     <div className="w-full fixed" style={{ zIndex: '999' }}>
